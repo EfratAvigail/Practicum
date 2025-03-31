@@ -1,0 +1,6 @@
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.csproj.AssemblyReference.cache
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.AssemblyInfoInputs.cache
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.AssemblyInfo.cs
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.csproj.CoreCompileInputs.cache
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music.DATA\obj\Debug\net8.0\Magical_Music.DATA.sourcelink.json
