@@ -13,10 +13,12 @@ namespace Magical_Music.DATA
             public DbSet<User> Users { get; set; }
             public DbSet<Song> Songs { get; set; }
 
-            public DataContext(DbContextOptions<DataContext> options) : base(options)
-            {
-            }
-        }
+        public DataContext(DbContextOptions<DataContext> options)
+            : base(options) { }
+
+    
+
+    }
 }
 
 

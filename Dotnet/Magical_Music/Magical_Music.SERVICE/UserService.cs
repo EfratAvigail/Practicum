@@ -3,6 +3,7 @@ using Magical_Music.CORE.DTOs;
 using Magical_Music.CORE.Models;
 using Magical_Music.CORE.Repositories;
 using Magical_Music.CORE.Services;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -49,24 +50,28 @@ namespace Magical_Music.SERVICE
 
         public async Task DeleteAsync(int id) => await _userRepository.DeleteAsync(id);
 
-        public async Task<User> Authenticate(string Password, string userPassword)
-        {
-            // הנחה שהשיטה GetByPasswordAsync מחזירה IEnumerable<User>
-            var users = await _userRepository.GetByPasswordAsync(Password);
-            var user = users.FirstOrDefault(); // קבל את המשתמש הראשון או null אם לא קיים
 
-            if (user != null && BCrypt.Net.BCrypt.Verify(userPassword, user.Password))
+        public User Authenticate(string username, string userPassword)
+        {
+            // בדיקה אם המשתמש קיים במאגר הנתונים לפי הסיסמה
+            var users = _userRepository.GetByPasswordAsync(userPassword).Result; // קבלת המשתמשים לפי סיסמה
+            var user = users.FirstOrDefault(u => u.Name == username); // בחר את המשתמש הראשון שתואם לשם המשתמש
+
+            if (user != null) // אם המשתמש קיים
             {
-                user.Role = "user"; // כאן אתה יכול לגשת ל-Role
+                user.Role = "user"; // משתמש רגיל
                 return user;
             }
 
+            // אם המשתמש לא נמצא במערכת → הוא "צופה"
             return new User
             {
-                Name = Password,
+                Name = username,
                 Password = userPassword,
-                Role = "viewer"
+                Role = "viewer" // תפקיד "צופה"
             };
         }
+
+
     }
 }

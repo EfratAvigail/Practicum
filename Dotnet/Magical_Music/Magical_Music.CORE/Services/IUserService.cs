@@ -12,8 +12,7 @@ namespace Magical_Music.CORE.Services
         Task<User> AddAsync(UserDTO user);
         Task<User> UpdateAsync(int id, UserDTO user);
         Task DeleteAsync(int id);
-        Task<IEnumerable<User>> GetByPasswordAsync(string Password);
-        User Authenticate(string username, string password);
+        User Authenticate(string username, string userPassword);
 
     }
 }

@@ -9,11 +9,11 @@ namespace Magical_Music.CORE.Repositories
 {
     public interface ISongRepository
     {
-        public Task<IEnumerable<Song>> GetAllAsync();
-        public Task<Song> GetByIdAsync(int id);
-        public Task<Song> AddAsync(Song song);
-        public Task<Song> UpdateAsync(int id, Song song);
-        public Task DeleteAsync(int id);
+         Task<IEnumerable<Song>> GetAllAsync();
+         Task<Song> GetByIdAsync(int id);
+         Task<Song> AddAsync(Song song);
+         Task<Song> UpdateAsync(int id, Song song);
+         Task DeleteAsync(int id);
         Task<IEnumerable<Song>> GetByCreatorIdAsync(int creatorId);
     }
 }
