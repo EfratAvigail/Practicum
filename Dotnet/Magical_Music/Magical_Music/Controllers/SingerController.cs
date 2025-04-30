@@ -1,83 +1,68 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Magical_Music.CORE.DTOs;
+using Magical_Music.CORE.Models;
+using Magical_Music.CORE.Repositories;
+using Magical_Music.CORE.Services;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto;
+using System;
+using System.Reflection;
 
 namespace Magical_Music.API.Controllers
 {
-    public class SingerController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class SingerController : ControllerBase
     {
-        // GET: SingerController
-        public ActionResult Index()
+        private readonly ISingerService _singerService;
+        public SingerController(ISingerService creatorService)
         {
-            return View();
+            _singerService = creatorService;
         }
 
-        // GET: SingerController/Details/5
-        public ActionResult Details(int id)
+
+        [HttpGet]
+        public async Task<IEnumerable<Singer>> GetAll()
         {
-            return View();
+            return await _singerService.GetAllAsync();
         }
 
-        // GET: SingerController/Create
-        public ActionResult Create()
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Singer>> GetById(int id)
         {
-            return View();
+            var Singer = await _singerService.GetByIdAsync(id);
+            if (Singer == null) return NotFound();
+            return Singer;
         }
 
-        // POST: SingerController/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult<Singer>> Add([FromBody] SingerDTO creatorDTO)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+
+            var singer = await _singerService.AddAsync(creatorDTO);
+            return CreatedAtAction(nameof(GetById), new { id = singer.Id }, singer);
+
         }
 
-        // GET: SingerController/Edit/5
-        public ActionResult Edit(int id)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Update(int id, [FromBody] SingerDTO singer)
         {
-            return View();
+
+            Singer s = await _singerService.UpdateAsync(id, singer);
+            if (s == null)
+            {
+                return NotFound();
+            }
+            return Ok(s);
         }
 
-        // POST: SingerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(int id)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: SingerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: SingerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            await _singerService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

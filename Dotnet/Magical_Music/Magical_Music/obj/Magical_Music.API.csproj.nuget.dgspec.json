@@ -332,11 +332,23 @@
               "target": "Package",
               "version": "[4.0.3, )"
             },
+            "DotNetEnv": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[8.0.14, )"
+            },
+            "ServiceStack.Text": {
+              "target": "Package",
+              "version": "[8.7.0, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",

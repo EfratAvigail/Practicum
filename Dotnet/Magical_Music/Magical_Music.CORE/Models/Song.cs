@@ -20,10 +20,10 @@ namespace Magical_Music.CORE.Models
         public DateTime ReleaseDate { get; set; }
 
         public string ImageUrl { get; set; }
-        public int creatorId { get; set; }
+        public int singerId { get; set; }
 
-       /// public Creator Creator { get; set; }
+        public Singer Singer { get; set; }
 
-      //  public ICollection<User> Users { get; set; }
+        public ICollection<User> Users { get; set; }
     }
 }

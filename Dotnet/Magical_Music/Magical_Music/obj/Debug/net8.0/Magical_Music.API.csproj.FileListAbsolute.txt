@@ -169,3 +169,7 @@ C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\obj
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\obj\Debug\net8.0\ref\Magical_Music.API.dll
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\bin\Debug\net8.0\ServiceStack.Text.dll
+C:\Users\user1\Desktop\תשפה\Practicum\Dotnet\Magical_Music\Magical_Music\bin\Debug\net8.0\Sprache.dll

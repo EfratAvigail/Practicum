@@ -18,6 +18,6 @@ namespace Magical_Music.CORE.DTOs
 
         public string ImageUrl { get; set; }
 
-        public int CreatorId { get; set; }
+        public int singerId { get; set; }
     }
 }

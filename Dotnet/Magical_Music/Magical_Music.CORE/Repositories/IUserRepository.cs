@@ -12,5 +12,7 @@ namespace Magical_Music.CORE.Repositories
         Task<User> UpdateAsync(int id, User user);
         Task DeleteAsync(int id);
         Task<IEnumerable<User>> GetByPasswordAsync(string Password);
+        Task<User> GetByEmailAsync(string email); // הוספת המתודה GetByEmailAsync
+
     }
 }

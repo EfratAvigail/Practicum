@@ -43,6 +43,7 @@ namespace Magical_Music.DATA.Repositories
         {
             return await _context.Users.Where(a => a.Password == password).ToListAsync();
         }
+     
 
         public async Task<User> UpdateAsync(int id, User user)
         {
@@ -55,6 +56,10 @@ namespace Magical_Music.DATA.Repositories
                 await _context.SaveChangesAsync();
             }
             return existingUser;
+        }
+        public async Task<User> GetByEmailAsync(string email)
+        {
+            return await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
         }
     }
 }

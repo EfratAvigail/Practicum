@@ -22,6 +22,23 @@ namespace Magical_Music.DATA.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("Magical_Music.CORE.Models.Singer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Singers");
+                });
+
             modelBuilder.Entity("Magical_Music.CORE.Models.Song", b =>
                 {
                     b.Property<int>("Id")
@@ -48,15 +65,12 @@ namespace Magical_Music.DATA.Migrations
                     b.Property<TimeSpan>("SongLength")
                         .HasColumnType("time(6)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("creatorId")
+                    b.Property<int>("singerId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("singerId");
 
                     b.ToTable("Songs");
                 });
@@ -90,16 +104,50 @@ namespace Magical_Music.DATA.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Magical_Music.CORE.Models.Song", b =>
+            modelBuilder.Entity("SongUser", b =>
                 {
-                    b.HasOne("Magical_Music.CORE.Models.User", null)
-                        .WithMany("Songs")
-                        .HasForeignKey("UserId");
+                    b.Property<int>("SongsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UsersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SongsId", "UsersId");
+
+                    b.HasIndex("UsersId");
+
+                    b.ToTable("SongUser");
                 });
 
-            modelBuilder.Entity("Magical_Music.CORE.Models.User", b =>
+            modelBuilder.Entity("Magical_Music.CORE.Models.Song", b =>
                 {
-                    b.Navigation("Songs");
+                    b.HasOne("Magical_Music.CORE.Models.Singer", "Singer")
+                        .WithMany("song")
+                        .HasForeignKey("singerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Singer");
+                });
+
+            modelBuilder.Entity("SongUser", b =>
+                {
+                    b.HasOne("Magical_Music.CORE.Models.Song", null)
+                        .WithMany()
+                        .HasForeignKey("SongsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Magical_Music.CORE.Models.User", null)
+                        .WithMany()
+                        .HasForeignKey("UsersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Magical_Music.CORE.Models.Singer", b =>
+                {
+                    b.Navigation("song");
                 });
 #pragma warning restore 612, 618
         }

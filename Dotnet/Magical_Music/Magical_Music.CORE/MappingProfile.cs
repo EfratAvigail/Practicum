@@ -14,6 +14,7 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<Song, SongDTO>().ReverseMap();
+        CreateMap<Singer, SingerDTO>().ReverseMap();
         CreateMap<UserDTO, User>()
             .ForMember(dest => dest.Name, opt => opt.MapFrom(src => $"{src.Name}")) // מיפוי מותאם
             .ReverseMap();

@@ -8,17 +8,15 @@ using System.Threading.Tasks;
 
 namespace Magical_Music.DATA
 {
-        public class DataContext : DbContext
-        {
-            public DbSet<User> Users { get; set; }
-            public DbSet<Song> Songs { get; set; }
+    public class DataContext : DbContext
+    {
+        public DbSet<User> Users { get; set; }
+        public DbSet<Song> Songs { get; set; }
+        public DbSet<Singer> Singers { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options)
             : base(options) { }
 
-    
-
     }
 }
-
 
